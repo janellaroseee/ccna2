@@ -1,4 +1,4 @@
-!@@@CORE SWITCH SA TAAS
+i!@@@CORE SWITCH SA TAAS
 config t
    hostname COREtaas62
    enable secret pass
@@ -218,12 +218,12 @@ ephone-dn 8
 ephone-dn 10
  number 6291
 Ephone 1
-  Mac-address 64e9.50ca.9f7e
+  Mac-address ccd8.c1fb.1519
   type 8945
   button 1:8 2:7 3:6 4:5
   restart
 Ephone 2
-  Mac-address ccd8.c1fb.1519
+  Mac-address  64e9.50ca.9f7e
   type 8945
   button 1:4 2:3 3:2 4:1
   restart  
@@ -324,7 +324,7 @@ config t
    enable secret pass
    service password-encryption
    no logging console
-   no ip domain-lookup
+no ip domain-lookup
    line console 0
      password pass
      login
