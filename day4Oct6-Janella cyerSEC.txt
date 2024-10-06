@@ -71,13 +71,36 @@ Int Gi 1
  ip access-group NOPORN1 in
  end
 
-
-
-
-TASK2: USE STANDARD ACCESS-LIST TO BLOCK OTHER CONTRIES/CLASSMATE:
+task 1.2
 config t
-NO ip access-list standard NOCOL1
-ip access-list standard NOCOL1
+NO ip access-list standard NOSCHOOL
+ip access-list standard NOSCHOOL
+DENY 172.67.14.0 0.0.255.255
+DENY 50.6.160.0 0.0.255.255
+DENY 184.168.125.0 0.0.0.255
+DENY 155.137.92.0 0.0.0.255
+Permit Any
+Int Gi 1
+ ip access-group NOSCHOOL in
+ end
+
+task 1.3
+config t
+NO ip access-list standard NOBANK
+ip access-list standard NOBANK
+DENY 151.101.3.0 0.0.255.255
+DENY 45.79.222.0 0.0.255.255
+DENY 118.215.79.0 0.0.255.255
+DENY 104.18.29.0 0.0.255.255
+Permit Any
+Int Gi 1
+ ip access-group NOBANK in
+ end
+
+TASK2: USE STANDARD ACCESS-LIST TO BLOCK OTHER CONTRIES/CLASSMATE: @EDGE
+config t
+NO ip access-list standard NOODDCLASSMATE
+ip access-list standard NOODDCLASSMATE
 DENY 10.11.0.0 0.0.255.255
 DENY 10.21.0.0 0.0.255.255
 DENY 10.31.0.0 0.0.255.255
@@ -86,8 +109,28 @@ DENY 10.51.0.0 0.0.255.255
 DENY 10.61.0.0 0.0.255.255
 Permit Any
 Int Gi 0/0/1
- ip access-group NOCOL1 in
+ ip access-group NOODDCLASSMATE in
  end
+
+task 2.1
+config t
+NO ip access-list standard WITHSALAMIN
+ip access-list standard WITHSALAMIN
+DENY 10.11.0.0 0.0.255.255
+DENY 10.12.0.0 0.0.255.255
+DENY 10.31.0.0 0.0.255.255
+DENY 10.32.0.0 0.0.255.255
+DENY 10.52.0.0 0.0.255.255
+Permit Any
+Int Gi 0/0/1
+ ip access-group WITHSALAMIN in
+ end
+
+config t
+Int Gi 0/0/1
+NO ip access-group standard WITHSALAMIN in
+ end
+
 
 TASK3: When you become a Security Analyst:
 Learn to Block the IPaddress from 3 "BAD" countries:
@@ -187,7 +230,7 @@ intentionally hackable websites
 task6: How to Make CUCM intentionally hackable to Learn
 the Basics for Firewalls.
 before: nmap -v 10.m.100.8
-@Cucm:
+@Cucm: = fa 0/0/ or CSR1000V = gi3
 config t
 int Gi 3
  no shut
