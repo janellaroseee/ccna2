@@ -37,10 +37,26 @@ FROM ENTERING YOUR NETWORK.
 step1: give Unlimited internet to EDGE:
 @edge
 CONFIG T
-IP ROUTE 0.0.0.0  0.0.0.0 200.0.0.1
+no logging console
+int Gi 1
+no shut
+ip add 192.168.108.5 255.255.2555.0
+@telnet @ 192.168.108.2
+@securert
+config t
+IP ROUTE 0.0.0.0  0.0.0.0 192.168.108.2
 ip name-server 8.8.8.8
 ip domain-lookup
-ALL THE PORN SITES THE WORLD ARE OWNED BY 5 COMPANIES:
+int gi 2
+no shut
+ip add 192.168.102.5 255.255.255.0
+int gi 3
+no shut
+ip add 192.168.103.5 255.255.255.0
+
+
+ALL THE PORN SITES 
+THE WORLD ARE OWNED BY 5 COMPANIES:
 
 config t
 NO ip access-list standard NOPORN1
